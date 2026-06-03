@@ -121,7 +121,7 @@ python construction/pipeline.py \
 
 #### Step 2 — Find the minimal hint prefix for hard problems
 
-**Option A — Local GPU (vLLM):**
+
 
 ```bash
 python construction/pipeline.py \
@@ -133,17 +133,6 @@ python construction/pipeline.py \
   --output-dir     output/
 ```
 
-**Option B — API only (no GPU required):**
-
-```bash
-python construction/run_api_model.py \
-  --think-results output/think_results.json \
-  --think-grading output/llm_grading_think.json \
-  --output-dir    output/prefix_search \
-  --api-model     gpt-4o \
-  --api-key       YOUR_API_KEY \
-  --base-url      https://api.openai.com/v1
-```
 
 #### Step 3 — Classify and merge into SFT format
 
