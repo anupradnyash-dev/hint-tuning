@@ -1,0 +1,16 @@
+# Constructed SFT dataset — download from HuggingFace / Zenodo
+data/hint_tuning_1k.json
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Outputs from construction scripts
+output/
+
+# Logs
+*.log

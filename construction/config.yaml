@@ -1,0 +1,41 @@
+# Configuration for Hint Tuning data construction
+
+models:
+  # Paper used Qwen3-4B-Thinking-2507 as the think model.
+  # Any model that produces <think>...</think> traces will work.
+  reasoning_model: "Qwen/Qwen3-4B-Thinking-2507"   # or local path
+  base_model:      "Qwen/Qwen3-4B-Instruct-2507"    # or local path
+
+gpu:
+  tensor_parallel_size: 4
+
+datasets:
+  s1k-1.1: "<PATH_TO_S1K_DATASET>"   # HuggingFace disk-saved s1K-1.1
+
+output:
+  think_results:    "./output/think_results.json"
+  instruct_results: "./output/instruct_results.json"
+  k_prefix:         "./output/k_prefix.json"
+  k_prefix_slim:    "./output/k_prefix_slim.json"
+
+inference:
+  temperature: 0.7
+  top_p: 0.8
+  top_k: 20
+  min_p: 0.0
+  max_model_len: 32768
+
+# Keywords used to split thinking traces into cumulative prefixes
+reflection_keywords:
+  - "wait"
+  - "actually"
+  - "let me reconsider"
+  - "on second thought"
+  - "hold on"
+  - "let me rethink"
+
+system_prompt: "You are a helpful assistant. Complete the reasoning step-by-step. Put your final answer inside \\boxed{}."
+
+processing:
+  max_problems: null   # null = all problems; set an integer to limit for testing
+  save_intermediate: true

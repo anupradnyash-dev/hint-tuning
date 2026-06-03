@@ -1,0 +1,10 @@
+{
+  "hint_tuning_1k": {
+    "file_name": "data/hint_tuning_1k.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  }
+}
