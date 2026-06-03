@@ -9,18 +9,13 @@ import os
 
 import numpy as np
 from transformers import AutoTokenizer
-from lighteval.tasks.tasks.gpqa import gpqa_diamond_instruct
 from lighteval.tasks.tasks.aime import MATH_PROMPT_TEMPLATE, record_to_sample
 from lighteval.tasks.tasks.math_500 import MATH_QUERY_TEMPLATE, record_to_sample as math500_record_to_sample
-from lighteval.tasks.tasks.lcb.main import lcb_codegeneration_prompt_fn
-from lighteval.tasks.tasks.mmlu import mmlu_prompt
-from lighteval.tasks.tasks.mmlu_pro import mmlu_pro_prompt_function, record_to_sample as mmlu_pro_record_to_sample
-from lighteval.tasks.tasks.triviaqa import triviaqa_prompt
 from lighteval.tasks.lighteval_task import LightevalTaskConfig
 from lighteval.metrics.metrics import Metrics
 from lighteval.tasks.requests import Doc, SamplingMethod
-from inspect_ai.solver import prompt_template, generate, multiple_choice
-from inspect_ai.scorer import model_graded_fact, choice
+from inspect_ai.solver import prompt_template, generate
+from inspect_ai.scorer import model_graded_fact
 from lighteval.metrics.metrics import math_scorer
 from lighteval.metrics.metrics_sample import SampleLevelComputation
 from lighteval.metrics.utils.metric_utils import SampleLevelMetric

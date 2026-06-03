@@ -59,12 +59,6 @@ def load_config(path: str) -> Dict[str, Any]:
     with open(path, encoding="utf-8") as f:
         return yaml.safe_load(f)
 
-def extract_boxed_answer(text: str) -> str:
-    """Return the last \\boxed{...} content, handling one level of nesting."""
-    matches = re.findall(r"\\boxed\{((?:[^{}]|\{[^{}]*\})*)\}", text)
-    return matches[-1].strip() if matches else ""
-
-
 # ─── LLM-as-judge grader ────────────────────────────────────────────────────
 
 # Grading prompt from the s1 paper (https://arxiv.org/abs/2501.19393).

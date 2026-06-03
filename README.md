@@ -197,6 +197,12 @@ If you find this work useful, please cite:
 }
 ```
 
+## License
+
+This project is licensed under the [Apache License 2.0](LICENSE).
+
+---
+
 ## Acknowledgements
 
 We are grateful to the authors of [s1](https://arxiv.org/abs/2501.19393) for curating and open-sourcing the s1K problem set that forms the foundation of our dataset, and to the [Relax](https://arxiv.org/abs/2604.11554) team for building and maintaining the post-training framework used in our experiments.
